@@ -1,0 +1,67 @@
+CREATE DATABASE IF NOT EXISTS mft CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE mft;
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(64) UNIQUE NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  role ENUM('user','admin') NOT NULL DEFAULT 'user',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE sessions (
+  session_id VARCHAR(64) PRIMARY KEY,
+  user_id INT NOT NULL,
+  expires_at DATETIME NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE files (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  owner_id INT NOT NULL,
+  original_name VARCHAR(255) NOT NULL,
+  storage_name VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (owner_id) REFERENCES users(id)
+);
+
+CREATE TABLE audit_logs (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  event_time TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  request_id VARCHAR(64),
+  username VARCHAR(64),
+  event_type VARCHAR(64) NOT NULL,
+  target VARCHAR(255),
+  remote_ip VARCHAR(45),
+  success TINYINT(1) NOT NULL,
+  detail TEXT,
+  INDEX idx_audit_time(event_time),
+  INDEX idx_audit_event(event_type),
+  INDEX idx_audit_user(username)
+);
+
+CREATE TABLE shares (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  file_id INT NOT NULL,
+  token VARCHAR(128) NOT NULL,
+  active TINYINT(1) NOT NULL DEFAULT 1,
+  FOREIGN KEY (file_id) REFERENCES files(id)
+);
+
+-- bcrypt hashes generated for the demo credentials.
+INSERT INTO users(username,password_hash,role) VALUES
+('admin', '$2y$12$hWnekeBLkAWJETH01PIANebJ5BNOnFB3CmuvThMJaQ0SDahwUeTj2', 'admin'),
+('alice', '$2y$12$hWnekeBLkAWJETH01PIANebJ5BNOnFB3CmuvThMJaQ0SDahwUeTj2', 'user'),
+('partner', '$2y$12$hWnekeBLkAWJETH01PIANebJ5BNOnFB3CmuvThMJaQ0SDahwUeTj2', 'user');
+
+INSERT INTO files(owner_id,original_name,storage_name) VALUES
+(2,'Q3_contract.pdf','f_1001.bin'),
+(2,'partner_price.xlsx','f_1002.bin'),
+(1,'incident_contacts.txt','f_1003.bin');
+
+INSERT INTO shares(file_id,token,active) VALUES
+(1,'SHARE-DEMO-001',1);
+
+-- Pre-existing admin web session so the SQLi can demonstrate session disclosure/hijacking.
+INSERT INTO sessions(session_id,user_id,expires_at) VALUES
+('ADMIN-SESSION-DEMO-2026',1,'2030-01-01 00:00:00');
