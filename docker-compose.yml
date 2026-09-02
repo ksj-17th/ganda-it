@@ -1,6 +1,7 @@
 services:
   db:
     image: mysql:8.0
+    restart: unless-stopped
     environment:
       MYSQL_DATABASE: mft
       MYSQL_USER: mft
@@ -24,6 +25,7 @@ services:
 
   php:
     build: ./app
+    restart: unless-stopped
     environment:
       DB_HOST: db
       DB_NAME: mft
@@ -40,6 +42,7 @@ services:
         condition: service_healthy
 
   nginx:
+    restart: unless-stopped
     image: nginx:1.27-alpine
     environment:
       TZ: Asia/Seoul
