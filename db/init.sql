@@ -48,12 +48,12 @@ CREATE TABLE shares (
   FOREIGN KEY (file_id) REFERENCES files(id)
 );
 
--- bcrypt hashes generated for the demo credentials.
+-- bcrypt hash for the shared demo password: 1234
 INSERT INTO users(username,password_hash,role) VALUES
-('admin', '$2y$12$hWnekeBLkAWJETH01PIANebJ5BNOnFB3CmuvThMJaQ0SDahwUeTj2', 'admin'),
-('alice', '$2y$12$hWnekeBLkAWJETH01PIANebJ5BNOnFB3CmuvThMJaQ0SDahwUeTj2', 'user'),
-('deployer', '$2y$12$hWnekeBLkAWJETH01PIANebJ5BNOnFB3CmuvThMJaQ0SDahwUeTj2', 'user');
-('hospital', '$2y$12$hWnekeBLkAWJETH01PIANebJ5BNOnFB3CmuvThMJaQ0SDahwUeTj2', 'user');
+('admin', '$2y$12$SKxzyTSUSEnaWH8MfVGs9OUdPWGglfLwBS.WbWTRuYIwGAviZyPR.', 'admin'),
+('alice', '$2y$12$SKxzyTSUSEnaWH8MfVGs9OUdPWGglfLwBS.WbWTRuYIwGAviZyPR.', 'user'),
+('deployer', '$2y$12$SKxzyTSUSEnaWH8MfVGs9OUdPWGglfLwBS.WbWTRuYIwGAviZyPR.', 'user'),
+('hospital', '$2y$12$SKxzyTSUSEnaWH8MfVGs9OUdPWGglfLwBS.WbWTRuYIwGAviZyPR.', 'user');
 
 INSERT INTO files(owner_id,original_name,storage_name) VALUES
 (2,'Q3_contract.pdf','f_1001.bin'),
