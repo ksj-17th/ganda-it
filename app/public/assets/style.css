@@ -1,0 +1,420 @@
+/* Shield Secure Transfer — FileTransfer.io inspired UI skin
+   Visual layer only. No JS/behavioral logic lives here. */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root{
+  --brand: #2f6fed;
+  --brand-dark: #1d4fd6;
+  --brand-light: #eaf0ff;
+  --ink: #161f2b;
+  --ink-soft: #55606e;
+  --line: #e6e9ef;
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --warn-bg: #fff6e0;
+  --warn-line: #f3d98b;
+  --warn-ink: #7a5b06;
+  --danger: #d64545;
+  --radius-lg: 20px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 8px 30px rgba(22, 31, 43, 0.06), 0 2px 8px rgba(22, 31, 43, 0.04);
+}
+
+*{ box-sizing: border-box; }
+
+html,body{
+  margin:0;
+  padding:0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a{ color: var(--brand); text-decoration:none; }
+a:hover{ text-decoration: underline; }
+
+/* ---------- Top nav ---------- */
+.topnav{
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.topnav-inner{
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight: 800;
+  font-size: 17px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.brand-mark{
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, var(--brand), #6ea1ff);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size: 15px;
+  font-weight: 800;
+  flex: none;
+}
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.nav-links a{
+  color: var(--ink-soft);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  text-decoration:none;
+  transition: background .15s ease, color .15s ease;
+}
+.nav-links a:hover{
+  background: var(--brand-light);
+  color: var(--brand-dark);
+  text-decoration:none;
+}
+.nav-links a.nav-cta{
+  background: var(--brand);
+  color:#fff;
+}
+.nav-links a.nav-cta:hover{
+  background: var(--brand-dark);
+  color:#fff;
+}
+
+/* ---------- Page shell ---------- */
+.page{
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+.page.wide{ max-width: 940px; }
+
+.card{
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 36px 40px;
+}
+
+.eyebrow{
+  display:inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--brand-dark);
+  background: var(--brand-light);
+  padding: 5px 10px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+h1{
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
+}
+h2{
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 0 0 18px;
+}
+h3{
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--ink-soft);
+  margin: 28px 0 12px;
+}
+p.lead{
+  font-size: 16px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
+
+/* ---------- Alerts ---------- */
+.warn{
+  background: var(--warn-bg);
+  border: 1px solid var(--warn-line);
+  color: var(--warn-ink);
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 0 0 22px;
+}
+.warn b{ color: var(--warn-ink); }
+
+.notice{
+  background: var(--brand-light);
+  border: 1px solid #cddcff;
+  color: var(--brand-dark);
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  margin: 0 0 20px;
+}
+
+.error-text{
+  color: var(--danger);
+  background: #fdeeee;
+  border: 1px solid #f5c6c6;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  margin: 0 0 18px;
+}
+
+pre.error-box{
+  color: var(--danger);
+  background: #fdeeee;
+  border: 1px solid #f5c6c6;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0 0 18px;
+}
+
+/* ---------- Feature list ---------- */
+ul.feature-list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+ul.feature-list li{
+  display:flex;
+  align-items:flex-start;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+ul.feature-list li::before{
+  content: "";
+  width: 8px;
+  height: 8px;
+  margin-top: 6px;
+  border-radius: 50%;
+  background: var(--brand);
+  flex: none;
+}
+
+/* ---------- Forms ---------- */
+form{ margin: 0; }
+.field{
+  margin-bottom: 16px;
+}
+label{
+  display:block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+input[type="text"],
+input[type="password"],
+input:not([type]){
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--ink);
+  background: #fbfcfe;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+input:not([type]):focus{
+  outline: none;
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px var(--brand-light);
+  background: #fff;
+}
+
+button, .btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap: 8px;
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  padding: 12px 22px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .15s ease, transform .05s ease;
+}
+button:hover, .btn:hover{ background: var(--brand-dark); }
+button:active, .btn:active{ transform: translateY(1px); }
+
+.btn-secondary{
+  background: #fff;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+.btn-secondary:hover{ background: var(--bg); }
+
+.btn-block{ width: 100%; }
+
+/* ---------- Dropzone (upload) ---------- */
+.dropzone{
+  position: relative;
+  border: 2px dashed #c7d3ec;
+  border-radius: var(--radius-lg);
+  background: var(--brand-light);
+  padding: 52px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .15s ease, background .15s ease;
+  margin-bottom: 18px;
+}
+.dropzone:hover{
+  border-color: var(--brand);
+  background: #e4ecff;
+}
+.dropzone-icon{
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: #fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size: 24px;
+  box-shadow: var(--shadow);
+}
+.dropzone-title{
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.dropzone-sub{
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+.dropzone input[type="file"]{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  opacity:0;
+  cursor:pointer;
+}
+
+/* ---------- Table ---------- */
+table{
+  width:100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+th{
+  text-align:left;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding: 10px 12px;
+  border-bottom: 2px solid var(--line);
+}
+td{
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+tr:last-child td{ border-bottom: none; }
+tr:hover td{ background: #fafbfd; }
+td form{ display:inline; }
+td .btn, td button{
+  padding: 7px 14px;
+  font-size: 13px;
+}
+
+code{
+  background: var(--bg);
+  border: 1px solid var(--line);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+/* ---------- Share link row ---------- */
+.share-link-row{
+  display:flex;
+  gap: 8px;
+  align-items:center;
+  margin: 18px 0;
+}
+.share-link-row input{
+  flex: 1;
+}
+
+.meta-line{
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin: 0 0 20px;
+}
+.meta-line b{ color: var(--ink); }
+
+.back-link{
+  display:inline-block;
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* ---------- Footer ---------- */
+.site-footer{
+  text-align:center;
+  padding: 28px 24px 40px;
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+
+@media (max-width: 560px){
+  .card{ padding: 26px 20px; }
+  h1{ font-size: 26px; }
+  .topnav-inner{ padding: 12px 16px; }
+}

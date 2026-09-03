@@ -22,7 +22,14 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 }
 include '_header.php';
 ?>
+<div class="card">
+<span class="eyebrow">Sign in</span>
 <h2>Login</h2>
-<?php if($error): ?><p><?=htmlspecialchars($error)?></p><?php endif; ?>
-<form method="post"><label>Username</label><br><input name="username"><br><label>Password</label><br><input type="password" name="password"><br><button>Login</button></form>
+<?php if($error): ?><p class="error-text"><?=htmlspecialchars($error)?></p><?php endif; ?>
+<form method="post">
+<div class="field"><label>Username</label><input name="username"></div>
+<div class="field"><label>Password</label><input type="password" name="password"></div>
+<button class="btn-block">Login</button>
+</form>
+</div>
 <?php include '_footer.php'; ?>

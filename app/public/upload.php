@@ -37,10 +37,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 include '_header.php';
 ?>
+<div class="card">
+<span class="eyebrow">Send files</span>
 <h2>Upload File</h2>
-<?php if ($msg): ?><p><?=htmlspecialchars($msg)?></p><?php endif; ?>
+<?php if ($msg): ?><p class="error-text"><?=htmlspecialchars($msg)?></p><?php endif; ?>
 <form method="post" enctype="multipart/form-data">
-    <input type="file" name="file" required>
-    <button type="submit">Upload</button>
+    <label class="dropzone">
+        <div class="dropzone-icon">&#8593;</div>
+        <div class="dropzone-title">클릭하여 파일 선택</div>
+        <div class="dropzone-sub">선택한 파일이 내 파일함에 안전하게 업로드됩니다</div>
+        <input type="file" name="file" required>
+    </label>
+    <button type="submit" class="btn-block">Upload</button>
 </form>
+</div>
 <?php include '_footer.php'; ?>

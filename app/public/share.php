@@ -40,11 +40,17 @@ audit_event('WEB', 'FILE_SHARE_CREATE', $u['username'], $file['original_name'], 
 $sharePath = '/guest.php?token=' . rawurlencode($token);
 include '_header.php';
 ?>
+<div class="card">
+<span class="eyebrow">Share link created</span>
 <h2>Share File</h2>
-<p><b><?=htmlspecialchars($file['original_name'])?></b></p>
-<p>Anyone with this link can download the file without logging in.</p>
+<p class="meta-line"><b><?=htmlspecialchars($file['original_name'])?></b></p>
+<p class="lead">Anyone with this link can download the file without logging in.</p>
 <p><a href="<?=htmlspecialchars($sharePath)?>"><?=htmlspecialchars($sharePath)?></a></p>
-<p><input id="share-link" value="<?=htmlspecialchars($sharePath)?>" readonly style="width:80%"> <button type="button" onclick="navigator.clipboard.writeText(document.getElementById('share-link').value)">Copy</button></p>
+<div class="share-link-row">
+<input id="share-link" value="<?=htmlspecialchars($sharePath)?>" readonly>
+<button type="button" onclick="navigator.clipboard.writeText(document.getElementById('share-link').value)">Copy</button>
+</div>
+<a class="back-link" href="/files.php">&larr; Back to My Files</a>
+</div>
 <script>document.getElementById('share-link').value = new URL(document.getElementById('share-link').value, window.location.origin).href;</script>
-<p><a href="/files.php">Back to My Files</a></p>
 <?php include '_footer.php'; ?>
