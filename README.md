@@ -1,4 +1,4 @@
-# MOVEit-inspired MFT Lab — pre-Wazuh logging build
+# MOVEit-inspired MFT Lab
 
 Training-only vulnerable Managed File Transfer lab. The application stack is simplified to Linux + nginx + PHP-FPM + MySQL, while the attack and logging flow is inspired by the 2023 MOVEit incident.
 
@@ -11,8 +11,6 @@ Training-only vulnerable Managed File Transfer lab. The application stack is sim
 - `logs/mft/syslog-mft.log`: local syslog copy of product events.
 - MySQL `audit_logs`: normal product audit events.
 - MySQL binary log: row-level database changes for recovery/DFIR. `general_log` remains OFF by design.
-
-Wazuh is intentionally not included yet. All file logs are bind-mounted to the host so a future Wazuh agent can read them without changing the application.
 
 ## Important forensic design choice
 
@@ -29,15 +27,22 @@ docker compose up --build -d
 
 Open: `http://127.0.0.1:8080`
 
-Demo user: `alice / alice123!`
+Demo user:
+
+| ID | PW | Description |
+| --- | --- | --- |
+| `admin` | `1234` | Admin Privilage |
+| alice | `1234` | Test Account |
+| deployer | `1234` | Vendor Employee |
+| hospital | `1234` | Hospital IT Manager |
 
 ## Useful log commands
 
 ```bash
-tail -f logs/nginx/access.log
-tail -f logs/mft/DMZ_WEB.log
-tail -f logs/mft/DMZ_ISAPI.log
-tail -f logs/mft/syslog-mft.log
+tail -f /opt/shield-secure-transfer/logs/nginx/access.log
+tail -f /opt/shield-secure-transfer/logs/mft/DMZ_WEB.log
+tail -f /opt/shield-secure-transfer/logs/mft/DMZ_ISAPI.log
+tail -f /opt/shield-secure-transfer/logs/mft/syslog-mft.log
 ```
 
 Audit DB:
