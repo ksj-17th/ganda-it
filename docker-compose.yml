@@ -35,7 +35,7 @@ services:
     volumes:
       - ./app/public:/var/www/html
       - ./app/src:/var/www/src:ro
-      - ./app/storage:/var/www/storage:ro
+      - ./app/storage:/var/www/storage
       - ./logs/mft:/var/log/mft
     depends_on:
       db:

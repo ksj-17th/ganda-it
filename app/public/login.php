@@ -25,5 +25,4 @@ include '_header.php';
 <h2>Login</h2>
 <?php if($error): ?><p><?=htmlspecialchars($error)?></p><?php endif; ?>
 <form method="post"><label>Username</label><br><input name="username"><br><label>Password</label><br><input type="password" name="password"><br><button>Login</button></form>
-<p>Demo user: <code>alice / alice123!</code></p>
 <?php include '_footer.php'; ?>

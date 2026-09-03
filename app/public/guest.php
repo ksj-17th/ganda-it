@@ -19,8 +19,8 @@ if($token!==''){
 include '_header.php';
 ?>
 <h2>Guest Download</h2>
-<p>외부 공유 토큰을 입력하면 공유된 파일의 메타데이터를 조회한다.</p>
+<p>토큰을 입력하여 공유받을 파일에 접근할 수 있습니다.</p>
 <form method="get"><input name="token" value="<?=htmlspecialchars($token)?>" placeholder="share token"><button>Open</button></form>
 <?php if($error): ?><pre><?=htmlspecialchars($error)?></pre><?php endif; ?>
-<?php if($rows): ?><table><tr><th>ID</th><th>File</th><th>Owner</th></tr><?php foreach($rows as $r): ?><tr><td><?=htmlspecialchars($r['id'])?></td><td><?=htmlspecialchars($r['original_name'])?></td><td><?=htmlspecialchars($r['owner_id'])?></td></tr><?php endforeach; ?></table><?php endif; ?>
+<?php if($rows): ?><table><tr><th>ID</th><th>File</th><th>Owner</th><th>Action</th></tr><?php foreach($rows as $r): ?><tr><td><?=htmlspecialchars($r['id'])?></td><td><?=htmlspecialchars($r['original_name'])?></td><td><?=htmlspecialchars($r['owner_id'])?></td><td><a href="/guest_download.php?token=<?=rawurlencode($token)?>">Download</a></td></tr><?php endforeach; ?></table><?php endif; ?>
 <?php include '_footer.php'; ?>

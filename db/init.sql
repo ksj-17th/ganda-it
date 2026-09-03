@@ -52,7 +52,8 @@ CREATE TABLE shares (
 INSERT INTO users(username,password_hash,role) VALUES
 ('admin', '$2y$12$hWnekeBLkAWJETH01PIANebJ5BNOnFB3CmuvThMJaQ0SDahwUeTj2', 'admin'),
 ('alice', '$2y$12$hWnekeBLkAWJETH01PIANebJ5BNOnFB3CmuvThMJaQ0SDahwUeTj2', 'user'),
-('partner', '$2y$12$hWnekeBLkAWJETH01PIANebJ5BNOnFB3CmuvThMJaQ0SDahwUeTj2', 'user');
+('deployer', '$2y$12$hWnekeBLkAWJETH01PIANebJ5BNOnFB3CmuvThMJaQ0SDahwUeTj2', 'user');
+('hospital', '$2y$12$hWnekeBLkAWJETH01PIANebJ5BNOnFB3CmuvThMJaQ0SDahwUeTj2', 'user');
 
 INSERT INTO files(owner_id,original_name,storage_name) VALUES
 (2,'Q3_contract.pdf','f_1001.bin'),
@@ -60,8 +61,10 @@ INSERT INTO files(owner_id,original_name,storage_name) VALUES
 (1,'incident_contacts.txt','f_1003.bin');
 
 INSERT INTO shares(file_id,token,active) VALUES
-(1,'SHARE-DEMO-001',1);
+(1,'7f7f00fc1ae7bb71950a80f335b227f40777db1effba6375',1),
+(2,'ba906adcd8ed6394b264b6ee41ce887630ed6be4c4c3c3f6',1),
+(3,'7c6d2408b6f178a5a90569d9ea6829b2812ff3b4659c40be',1);
 
 -- Pre-existing admin web session so the SQLi can demonstrate session disclosure/hijacking.
 INSERT INTO sessions(session_id,user_id,expires_at) VALUES
-('ADMIN-SESSION-DEMO-2026',1,'2030-01-01 00:00:00');
+('8c3f6a1d9e42b750c4d2816fa037be95',1,'2030-01-01 00:00:00');
