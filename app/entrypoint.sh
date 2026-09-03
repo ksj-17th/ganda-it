@@ -1,6 +1,10 @@
 #!/bin/sh
 set -eu
-mkdir -p /var/log/mft
+
+mkdir -p /var/log/mft /var/www/storage
+chown -R www-data:www-data /var/www/storage
+chmod -R 775 /var/www/storage
+
 # rsyslog creates /dev/log for PHP's syslog() calls.
 rsyslogd
 exec php-fpm -F
