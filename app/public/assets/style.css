@@ -36,6 +36,7 @@ html,body{
 a{ color: var(--brand); text-decoration:none; }
 a:hover{ text-decoration: underline; }
 
+
 /* ---------- Top nav ---------- */
 .topnav{
   background: var(--card);
@@ -53,27 +54,30 @@ a:hover{ text-decoration: underline; }
   justify-content: space-between;
   gap: 16px;
 }
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight: 800;
-  font-size: 17px;
-  color: var(--ink);
-  letter-spacing: -0.01em;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  span:last-child {
+    font-size: 28px;
+    font-weight: 700;
+    font-family: "Trebuchet MS", Arial, sans-serif;
 }
-.brand-mark{
-  width: 30px;
-  height: 30px;
-  border-radius: 9px;
-  background: linear-gradient(135deg, var(--brand), #6ea1ff);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-  font-size: 15px;
-  font-weight: 800;
-  flex: none;
+}
+.brand-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 .nav-links{
   display:flex;
@@ -161,17 +165,7 @@ p.lead{
 }
 
 /* ---------- Alerts ---------- */
-.warn{
-  background: var(--warn-bg);
-  border: 1px solid var(--warn-line);
-  color: var(--warn-ink);
-  padding: 14px 16px;
-  border-radius: var(--radius-md);
-  font-size: 14px;
-  line-height: 1.55;
-  margin: 0 0 22px;
-}
-.warn b{ color: var(--warn-ink); }
+
 
 .notice{
   background: var(--brand-light);
@@ -296,6 +290,7 @@ button:active, .btn:active{ transform: translateY(1px); }
 
 .btn-block{ width: 100%; }
 
+
 /* ---------- Dropzone (upload) ---------- */
 .dropzone{
   position: relative;
@@ -418,3 +413,4 @@ code{
   h1{ font-size: 26px; }
   .topnav-inner{ padding: 12px 16px; }
 }
+

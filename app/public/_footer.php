@@ -1,3 +1,3 @@
 </div>
-<div class="site-footer">Shield Secure Transfer — Training Lab</div>
+<div class="site-footer">Ganda-it — Secure File Transfer System</div>
 </body></html>
